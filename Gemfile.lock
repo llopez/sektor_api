@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/llopez/sektor.git
-  revision: 07fb9b8c07cc49490a55030de5ffc351e0c75b5b
+  revision: 4fb63347a8d14a7fe17f837fdb3ced405d49110c
   specs:
-    sektor (1.1.0)
+    sektor (1.2.0)
       nokogiri (~> 1.6.8)
 
 GEM
