@@ -1,15 +1,11 @@
 module Api
   module V1
     class TracksController < ApplicationController
-      def index
-        token = token_param
+      before_action :authenticate
 
-        if token == Rails.application.secrets.api_token
-          result = Sektor.search search_param
-          render json: result, status: :ok
-        else
-          render json: { error: 'invalid token' }, status: :bad_request
-        end
+      def index
+        result = Sektor.search search_param
+        render json: result.data, status: :ok
       end
 
       rescue_from ActionController::ParameterMissing do |e|
@@ -17,10 +13,6 @@ module Api
       end
 
       private
-
-      def token_param
-        params.require :token
-      end
 
       def search_param
         params.require :q
