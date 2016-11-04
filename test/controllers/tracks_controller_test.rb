@@ -6,6 +6,11 @@ class TracksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get page" do
+    get api_v1_tracks_url(q: "we are the champions", page: 1), headers: { authorization: %{Token token="1234"} }
+    assert_response :success
+  end
+
   test "should require param q" do
     get api_v1_tracks_url, headers: { authorization: %{Token token="1234"} }
     assert_response :bad_request

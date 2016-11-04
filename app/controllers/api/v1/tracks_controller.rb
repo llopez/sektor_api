@@ -4,8 +4,11 @@ module Api
       before_action :authenticate
 
       def index
-        result = Sektor.search search_param
-        render json: result.data, status: :ok
+        search = Sektor.search search_param
+
+        result = params[:page].present? ? search.page(params[:page]) : search.all
+
+        render json: result, status: :ok
       end
 
       rescue_from ActionController::ParameterMissing do |e|
