@@ -13,6 +13,8 @@ default: &default
 
 development:
   <<: *default
+  adapter: sqlite3
+  timeout: 5000
   database: sektor_api_dev
 
 # Warning: The database defined as "test" will be erased and
